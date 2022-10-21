@@ -22,6 +22,17 @@ namespace MovieWeb.Api.Controllers
             _mapper = mapper;
         }
 
+
+        /// <summary>
+        /// Get a single movie
+        /// </summary>
+        /// <returns>Movie</returns>
+        [HttpGet("movie")]
+        public async Task<IActionResult> GetMovie(int id)
+        {
+            return Ok(await _mediator.Send(new GetMovieQuery() { MovieId = id }));
+        }
+
         /// <summary>
         /// Get a movie list
         /// </summary>

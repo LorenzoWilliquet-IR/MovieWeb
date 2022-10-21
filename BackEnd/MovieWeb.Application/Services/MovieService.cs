@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using MovieWeb.Application.Common.Interfaces;
 using MovieWeb.Application.Common.Movies.Dtos;
 using MovieWeb.Domain;
 using MovieWeb.Infrastructure.Persistence;
+using System.Net.Http;
+using System.Text.Json;
 
 namespace MovieWeb.Application.Services
 {
@@ -31,9 +34,29 @@ namespace MovieWeb.Application.Services
             return newMovie.Id;
         }
 
+        public async Task<MovieDetailDto> GetMovieAsync(int id)
+        {
+            var movie = await dbContext.Movies
+                .Where(o => o.Id == id)
+                .FirstOrDefaultAsync();
+
+            if (movie == null)
+                return null;
+
+            var movieDetailDto = new MovieDetailDto()
+            {
+                Id = id,
+                Name = movie.Name,
+                ReleaseDate = movie.ReleaseDate,
+                DurationInMinutes = movie.DurationInMinutes
+            };
+
+            return movieDetailDto;
+        }
+
         public async Task<MovieDto[]> GetMoviesAsync()
         {
-            var orders = await dbContext.Movies
+            var movies = await dbContext.Movies
                 .Select(o => new MovieDto
                 {
                     Id = o.Id,
@@ -41,7 +64,7 @@ namespace MovieWeb.Application.Services
                 })
                 .ToArrayAsync();
 
-            return orders;
+            return movies;
         }
     }
 }

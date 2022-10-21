@@ -4,6 +4,7 @@ namespace MovieWeb.Application.Common.Interfaces
 {
     public interface IMovieService
     {
+        Task<MovieDetailDto> GetMovieAsync(int id);
         Task<MovieDto[]> GetMoviesAsync();
 
         /// <summary>
