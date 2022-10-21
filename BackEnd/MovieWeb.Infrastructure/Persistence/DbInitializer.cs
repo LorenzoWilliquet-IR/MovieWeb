@@ -26,7 +26,7 @@ namespace MovieWeb.Infrastructure.Persistence
                 },
                 new Movie()
                 {
-                    Name = "Scream", DurationInMinutes = 133, ReleaseDate = new DateTime(2005,05,05)
+                    Name = "Scream (2022)", DurationInMinutes = 114, ReleaseDate = new DateTime(2022,01,14)
                 },
                 new Movie()
                 {
@@ -58,7 +58,15 @@ namespace MovieWeb.Infrastructure.Persistence
                 new Actor()
                 {
                     FirstName = "Elijah", LastName = "Wood", Birthdate =  new DateTime(1963,6,9), MovieId = 2
-                }
+                },
+                new Actor()
+                {
+                    FirstName = "Jack", LastName = "Quaid", Birthdate =  new DateTime(1992,04,24), MovieId = 3
+                },
+                new Actor()
+                {
+                    FirstName = "Robert", LastName = "De Niro", Birthdate =  new DateTime(1972,6,9), MovieId = 4
+                },
             };
 
             foreach (var actor in actors)
