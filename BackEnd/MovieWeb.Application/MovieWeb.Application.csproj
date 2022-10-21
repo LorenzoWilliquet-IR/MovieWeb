@@ -7,13 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Interfaces\" />
     <Folder Include="Common\Actors\Commands\" />
     <Folder Include="Common\Actors\Dtos\" />
-    <Folder Include="Common\Actors\Queries\" />
     <Folder Include="Common\Movies\Commands\" />
-    <Folder Include="Common\Movies\Dtos\" />
-    <Folder Include="Common\Movies\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieWeb.Infrastructure\MovieWeb.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieWeb.Domain\MovieWeb.Domain.csproj" />
   </ItemGroup>
 
 </Project>
