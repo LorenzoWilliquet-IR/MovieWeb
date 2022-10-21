@@ -24,6 +24,14 @@ export class MovieListComponent implements OnInit {
     this.movieService.getMovies()
     .subscribe(movies => this.movieArray = movies);
   }
+  // add movies
+  addMovie(): void {
+    this.movieService.addMovie(this.selectedHero)
+   .subscribe(() => {
+      this.movieArray.push(this.selectedHero);
+      this.selectedHero = undefined;
+    });
+  }
 
   constructor(private movieService: MoviesService) { }
 
