@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using MovieWeb.Application.Common.Actors.Dtos;
 
 namespace MovieWeb.Application.Common.Actors.Queries.GetActors
 {
-    internal class GetActorsQuery
+    public class GetActorsQuery : IRequest<GetActorsDto[]>
     {
+
     }
 }

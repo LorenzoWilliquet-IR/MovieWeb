@@ -5,5 +5,6 @@ namespace MovieWeb.Application.Common.Movies.Queries.GetMovies
 {
     public class GetMoviesQuery : IRequest<MovieDto[]>
     {
+
     }
 }

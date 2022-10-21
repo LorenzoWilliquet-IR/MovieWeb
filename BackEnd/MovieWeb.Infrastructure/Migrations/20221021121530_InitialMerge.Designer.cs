@@ -12,8 +12,8 @@ using MovieWeb.Infrastructure.Persistence;
 namespace MovieWeb.Infrastructure.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20221021085703_initial")]
-    partial class initial
+    [Migration("20221021121530_InitialMerge")]
+    partial class InitialMerge
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,30 @@ namespace MovieWeb.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("MovieWeb.Domain.Actor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Actors");
+                });
 
             modelBuilder.Entity("MovieWeb.Domain.Movie", b =>
                 {

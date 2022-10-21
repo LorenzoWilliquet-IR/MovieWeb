@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using MovieWeb.Application.Common.Actors.Dtos;
+using MovieWeb.Application.Common.Actors.Queries.GetActors;
+using MovieWeb.Application.Common.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +13,18 @@ namespace MovieWeb.Api.Controllers
     [ApiController]
     public class ActorController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
+        public ActorController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
         // GET: api/actors
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(await _mediator.Send(new GetActorsQuery()));
         }
 
         // GET api/actors/5

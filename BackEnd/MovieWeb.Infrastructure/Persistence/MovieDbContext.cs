@@ -6,10 +6,11 @@ namespace MovieWeb.Infrastructure.Persistence
     public class MovieDbContext : DbContext
     {
         public DbSet<Movie> Movies => Set<Movie>();
+        public DbSet<Actor> Actors => Set<Actor>();
 
-        public MovieDbContext(DbContextOptions options) : base(options)
+        public MovieDbContext(DbContextOptions<MovieDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
@@ -26,6 +27,15 @@ namespace MovieWeb.Infrastructure.Persistence
             modelBuilder
                 .Entity<Movie>()
                 .Property(t => t.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder
+                .Entity<Actor>()
+                .HasKey(a => a.Id);
+
+            modelBuilder
+                .Entity<Actor>()
+                .Property(a => a.Id)
                 .ValueGeneratedOnAdd();
 
             base.OnModelCreating(modelBuilder);
