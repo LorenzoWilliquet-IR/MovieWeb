@@ -3,8 +3,10 @@ using MediatR;
 using Microservices.Orders.Application.Common.Orders.Commands.CreateOrder;
 using Microsoft.AspNetCore.Mvc;
 using MovieWeb.Application.Common.Movies.Commands.DeleteMovie;
+using MovieWeb.Application.Common.Movies.Commands.UpdateMovie;
 using MovieWeb.Application.Common.Movies.Dtos;
 using MovieWeb.Application.Common.Movies.Queries.GetMovies;
+using MovieWeb.Domain;
 
 namespace MovieWeb.Api.Controllers
 {
@@ -51,6 +53,21 @@ namespace MovieWeb.Api.Controllers
         public async Task<ActionResult> Create([FromBody] CreateMovieDto movieDto)
         {
             var movie = await _mediator.Send(new CreateMovieCommand() { CreateMovieDto = movieDto });
+
+            return Ok(movie);
+        }
+
+        /// <summary>
+        /// Update an existing movie
+        /// </summary>
+        /// <returns>Movie</returns>
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Update([FromRoute] int id, [FromBody] UpdateMovieDto movieDto)
+        {
+            var movie = await _mediator.Send(new UpdateMovieCommand() { UpdateMovieDto = movieDto, MovieId = id });
+
+            if (movie == null)
+                return NotFound();
 
             return Ok(movie);
         }

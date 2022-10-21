@@ -78,5 +78,27 @@ namespace MovieWeb.Application.Services
 
             return true;
         }
+
+        public async Task<bool> UpdateMovieAsync(UpdateMovieDto movieDto, int id)
+        {
+            var movie = await dbContext.Movies
+                .Where(o => o.Id == id)
+                .FirstOrDefaultAsync();
+
+            if (movie == null)
+                throw new ArgumentNullException("Movie not found.");
+
+            if (movieDto == null)
+                throw new ArgumentNullException("UpdateMovieDto should not be null.");
+
+            movie.DurationInMinutes = movieDto.DurationInMinutes;
+            movie.ReleaseDate = movieDto.ReleaseDate;
+            movie.Name = movieDto.Name;
+
+            dbContext.Movies.Update(movie);
+            await dbContext.SaveChangesAsync(default);
+
+            return true;
+        }
     }
 }
