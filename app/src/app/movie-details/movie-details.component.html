@@ -1,5 +1,12 @@
-<div *ngIf="movie">
+<div *ngIf="movie" class="lol">
   <h2>{{movie.name | uppercase}} Details</h2>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="deleteMovie()">Delete Movie</button>
+  <p> Duration: {{ movie.durationInMinutes }} min</p>
+  <p> Release Date: {{ movie.releaseDate | date }}</p>
+  <h3>Actors:</h3>
+  <div *ngFor="let actors of movie.actors">
+    <p *ngIf="actors"> {{actors.firstName}} {{actors.lastName}} </p>  
+  </div>
+
+  <button type="button" mat-raised-button color="primary" (click)="goBack()">go back</button>
+  <button type="button" mat-raised-button color="primary" (click)="deleteMovie()">Delete Movie</button>
 </div>

@@ -7,3 +7,11 @@ mat-grid-tile {
   }
 
   
+.name {
+  color: black;
+}
+a {
+  text-decoration: none !important;
+}
+
+  
