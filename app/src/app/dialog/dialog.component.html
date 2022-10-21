@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Add New Movie</h1>
+<div mat-dialog-content>
+<form [formGroup]="productForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input formControlName="productName" type="text" placeholder="name" matInput>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Duration In Minutes</mat-label>
+        <input formControlName="productDuration" type="number" placeholder="name" matInput>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Release Date</mat-label>
+        <input type="date" placeholder="name" matInput>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+</form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button type="submit" aria-label="button" color="warn" >Save Movie</button>
+    <button mat-raised-button type="button" aria-label="button" color="primary" mat-dialog-close >Close</button>
+</div>
