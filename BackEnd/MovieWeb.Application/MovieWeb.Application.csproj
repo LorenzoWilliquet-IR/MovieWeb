@@ -7,13 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Interfaces\" />
     <Folder Include="Common\Actors\Commands\" />
     <Folder Include="Common\Actors\Dtos\" />
     <Folder Include="Common\Actors\Queries\" />
     <Folder Include="Common\Movies\Commands\" />
-    <Folder Include="Common\Movies\Dtos\" />
-    <Folder Include="Common\Movies\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieWeb.Infrastructure\MovieWeb.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
