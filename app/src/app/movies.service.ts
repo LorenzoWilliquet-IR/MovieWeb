@@ -26,7 +26,7 @@ export class MoviesService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-
+  // get movies as a list of movies
   getMovies(): Observable<any[]> {
     return this.http.get<any[]>(this.movieUrl)  
     .pipe(
@@ -35,5 +35,38 @@ export class MoviesService {
     );
   }
 
+  // get single movie by id
+  getMovie(id: number): Observable<any> {
+    return this.http.get<any>(`${this.movieUrl}/${id}`)
+    .pipe(
+      tap(_ => console.log(`fetched movie #${id}`)),
+      catchError(this.handleError<any[]>('getMovieById', []))
+  );
+}
 
+/** DELETE: delete the hero from the server */
+deleteHero(id: number): Observable<any> {
+  const url = `${this.movieUrl}/${id}`;
+  return this.http.delete<any>(url, this.httpOptions).pipe(
+    tap(_ => console.log(`deleted hero id=${id}`)),
+    catchError(this.handleError<any>('deleteHero'))
+  );
+}
+// add a new movie
+addMovie(movie: any): Observable<any> {
+  const url = `${this.movieUrl}`;
+  return this.http.post<any>(url, movie, this.httpOptions).pipe(
+    tap(_ => console.log('added movie')),
+    catchError(this.handleError<any>('addMovie'))
+  );
+}
+
+// update a movie
+updateMovie(movie: any): Observable<any> {
+  const url = `${this.movieUrl}/${movie.id}`;
+  return this.http.put<any>(url, movie, this.httpOptions).pipe(
+    tap(_ => console.log(`updated hero id=${movie.id}`)),
+    catchError(this.handleError<any>('updateMovie'))
+  );
+}
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,11 +12,14 @@ import { HeaderComponent } from './header/header.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MovieListComponent
+    MovieListComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatToolbarModule,
     MatIconModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule,
+    AppRoutingModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
