@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MovieWeb.Application.Common.Actors.Dtos;
 using MovieWeb.Application.Common.Actors.Queries.GetActors;
 using MovieWeb.Application.Common.Interfaces;
+using MovieWeb.Application.Common.Movies.Queries.GetMovies;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,9 +30,9 @@ namespace MovieWeb.Api.Controllers
 
         // GET api/actors/5
         [HttpGet("{id:int}")]
-        public string Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            return "value";
+            return Ok(await _mediator.Send(new GetActorQuery { ActorId = id }));
         }
 
         // POST api/actors

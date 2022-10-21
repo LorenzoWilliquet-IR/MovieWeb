@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using MovieWeb.Application.Common.Actors.Dtos;
 using MovieWeb.Application.Common.Interfaces;
 using MovieWeb.Domain;
@@ -9,10 +10,12 @@ namespace MovieWeb.Application.Common.Actors
     public class ActorService : IActorService
     {
         private readonly MovieDbContext dbContext;
+        private readonly IMapper mapper;
 
-        public ActorService(MovieDbContext dbContext)
+        public ActorService(MovieDbContext dbContext, IMapper mapper)
         {
             this.dbContext = dbContext;
+            this.mapper = mapper;
         }
 
         public Task<bool> CreateActorAsync(Actor actor)
@@ -25,9 +28,15 @@ namespace MovieWeb.Application.Common.Actors
             throw new NotImplementedException();
         }
 
-        public Task<Actor> GetActorAsync(int id)
+        public async Task<GetActorDto> GetActorAsync(int id)
         {
-            throw new NotImplementedException();
+            var actor = await dbContext.Actors
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+
+            var actorDto = mapper.Map<GetActorDto>(actor);
+
+            return actorDto;
         }
 
         public async Task<GetActorsDto[]> GetActorsAsync()
