@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Interfaces\" />
     <Folder Include="Common\Actors\Commands\" />
     <Folder Include="Common\Actors\Queries\" />
     <Folder Include="Common\Movies\Commands\" />
     <Folder Include="Common\Movies\Dtos\" />
     <Folder Include="Common\Movies\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieWeb.Domain\MovieWeb.Domain.csproj" />
   </ItemGroup>
 
 </Project>
