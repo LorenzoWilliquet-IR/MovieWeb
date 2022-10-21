@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace MovieWeb.Application.Common.Actors.Dtos
 {
-    public class GetActorsDto
+    public class UpdateActorDto
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
+        public DateTime BirthDate { get; set; }
     }
 }
