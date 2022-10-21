@@ -8,10 +8,13 @@
 
   <ItemGroup>
     <Folder Include="Common\Actors\Commands\" />
+    <Folder Include="Common\Actors\Dtos\" />
+    <Folder Include="Common\Actors\Queries\" />
     <Folder Include="Common\Movies\Commands\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="MediatR" Version="11.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
