@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Actors\Commands\" />
-    <Folder Include="Common\Actors\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
