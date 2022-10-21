@@ -14,5 +14,7 @@ namespace MovieWeb.Application.Common.Interfaces
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         Task<int> CreateMovieAsync(CreateMovieDto movie);
+
+        Task<int> DeleteMovieAsync(int id);
     }
 }

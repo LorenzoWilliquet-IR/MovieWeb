@@ -66,5 +66,14 @@ namespace MovieWeb.Application.Services
 
             return movies;
         }
+
+        public async Task<int> DeleteMovieAsync(int id)
+        {
+            var movieToBeDeleted = mapper.Map<Movie>(await GetMovieAsync(id));
+
+            dbContext.Movies.Remove(movieToBeDeleted);
+
+            return movieToBeDeleted.Id;
+        }
     }
 }
