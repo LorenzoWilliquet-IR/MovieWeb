@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieWeb.Api", "MovieWeb.Api\MovieWeb.Api.csproj", "{D3EE2219-1EFF-4D19-8C39-BFF4EAC8F2BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieWeb.Api", "MovieWeb.Api\MovieWeb.Api.csproj", "{D3EE2219-1EFF-4D19-8C39-BFF4EAC8F2BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C2AF1AB8-85AF-42C9-BB71-4CBB8B3DFE9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3EE2219-1EFF-4D19-8C39-BFF4EAC8F2BB} = {C2AF1AB8-85AF-42C9-BB71-4CBB8B3DFE9B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F41230D-FC6D-464F-B0A1-D46C94E97378}
