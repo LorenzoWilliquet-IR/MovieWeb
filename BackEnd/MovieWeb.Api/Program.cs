@@ -1,9 +1,9 @@
-using MediatR;
 using Microsoft.EntityFrameworkCore;
+using MovieWeb.Api.Profiles;
+using MovieWeb.Application.Common;
 using MovieWeb.Application.Common.Interfaces;
-using MovieWeb.Application.Common.Movies;
+using MovieWeb.Application.Services;
 using MovieWeb.Infrastructure.Persistence;
-using System.Reflection;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,18 +12,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<IMovieService, MovieService>();
 
+builder.Services.AddAutoMapper(typeof(MovieProfile));
+
 builder.Services.AddDbContext<MovieDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddExtensions();
 
 var app = builder.Build();
 
