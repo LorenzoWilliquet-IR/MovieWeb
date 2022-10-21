@@ -8,9 +8,12 @@
 
   <ItemGroup>
     <Folder Include="Common\Interfaces\" />
-    <Folder Include="Common\Orders\Commands\" />
-    <Folder Include="Common\Orders\Dtos\" />
-    <Folder Include="Common\Orders\Queries\" />
+    <Folder Include="Common\Actors\Commands\" />
+    <Folder Include="Common\Actors\Dtos\" />
+    <Folder Include="Common\Actors\Queries\" />
+    <Folder Include="Common\Movies\Commands\" />
+    <Folder Include="Common\Movies\Dtos\" />
+    <Folder Include="Common\Movies\Queries\" />
   </ItemGroup>
 
 </Project>
