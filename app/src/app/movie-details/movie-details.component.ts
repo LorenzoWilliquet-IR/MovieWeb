@@ -18,12 +18,20 @@ export class MovieDetailsComponent implements OnInit {
 
   // get movie 
   getMovie() {
-   //const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.movieService.getMovie(this.movie.id).subscribe(movie => {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.movieService.getMovie(id).subscribe(movie => {
       this.movie = movie;
     });
   }
 
+  // delete a movie 
+  deleteMovie() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.movieService.deleteMovie(id).subscribe(movie => {
+      this.movie = movie;
+      this.location.back();
+    })
+  }
   ngOnInit(): void {
     this.getMovie();
   }
