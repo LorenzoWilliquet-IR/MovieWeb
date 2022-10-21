@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using MovieWeb.Application.Common.Actors.Dtos;
 using MovieWeb.Application.Common.Interfaces;
 using MovieWeb.Application.Common.Movies.Dtos;
 using MovieWeb.Domain;
@@ -35,6 +36,7 @@ namespace MovieWeb.Application.Services
         {
             var movie = await dbContext.Movies
                 .Where(o => o.Id == id)
+                .Include(o => o.Actors)
                 .FirstOrDefaultAsync();
 
             if (movie == null)
@@ -47,6 +49,16 @@ namespace MovieWeb.Application.Services
                 ReleaseDate = movie.ReleaseDate,
                 DurationInMinutes = movie.DurationInMinutes
             };
+            foreach (var actor in movie.Actors)
+            {
+                movieDetailDto.Actors.Add(new GetActorDto
+                {
+                    Id = actor.Id,
+                    FirstName = actor.FirstName,
+                    LastName = actor.LastName,
+                    Birthdate = actor.Birthdate,
+                });
+            }
 
             return movieDetailDto;
         }
