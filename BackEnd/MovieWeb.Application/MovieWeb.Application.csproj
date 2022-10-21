@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Actors\Commands\" />
-    <Folder Include="Common\Actors\Dtos\" />
     <Folder Include="Common\Actors\Queries\" />
   </ItemGroup>
 
@@ -20,6 +19,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MovieWeb.Infrastructure\MovieWeb.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieWeb.Domain\MovieWeb.Domain.csproj" />
   </ItemGroup>
 
 </Project>
