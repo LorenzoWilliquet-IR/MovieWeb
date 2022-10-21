@@ -6,7 +6,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MoviesService {
-  private movieUrl = '';
+  private movieUrl = 'https://localhost:7144/api/movies';
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
