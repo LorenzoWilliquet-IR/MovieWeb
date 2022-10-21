@@ -1,6 +1,9 @@
 mat-grid-tile {
     background: lightblue;
-    margin: 2rem;
+  }
+  li {
+    list-style-type: none;
+    margin: 0;
   }
 
   

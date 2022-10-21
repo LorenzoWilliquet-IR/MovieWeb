@@ -1,5 +1,10 @@
-<mat-list role="list">
-    <mat-list-item role="listitem">Item 1</mat-list-item>
-    <mat-list-item role="listitem">Item 2</mat-list-item>
-    <mat-list-item role="listitem">Item 3</mat-list-item>
-  </mat-list>
+<div *ngIf="movie">
+
+  <h2>{{movie.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{movie.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="movie.name" placeholder="name">
+  </div>
+
+</div>

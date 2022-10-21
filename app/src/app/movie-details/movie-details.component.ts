@@ -3,8 +3,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
@@ -20,6 +18,7 @@ export class MovieDetailsComponent implements OnInit {
 
   // get movie 
   getMovie() {
+   //const id = Number(this.route.snapshot.paramMap.get('id'));
     this.movieService.getMovie(this.movie.id).subscribe(movie => {
       this.movie = movie;
     });

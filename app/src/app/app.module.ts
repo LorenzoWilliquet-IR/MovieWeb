@@ -14,12 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { MovieModalComponent } from './movie-modal/movie-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    MovieModalComponent
   ],
   imports: [
     BrowserModule,
