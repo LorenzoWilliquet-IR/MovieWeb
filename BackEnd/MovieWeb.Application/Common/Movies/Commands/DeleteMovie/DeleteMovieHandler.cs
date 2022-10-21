@@ -3,7 +3,7 @@ using MovieWeb.Application.Common.Interfaces;
 
 namespace MovieWeb.Application.Common.Movies.Commands.DeleteMovie
 {
-    public class DeleteMovieHandler : IRequestHandler<DeleteMovieCommand, int>
+    public class DeleteMovieHandler : IRequestHandler<DeleteMovieCommand, bool>
     {
         private readonly IMovieService movieService;
 
@@ -12,7 +12,7 @@ namespace MovieWeb.Application.Common.Movies.Commands.DeleteMovie
             this.movieService = movieService;
         }
 
-        public async Task<int> Handle(DeleteMovieCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(DeleteMovieCommand request, CancellationToken cancellationToken)
         {
             return await movieService.DeleteMovieAsync(request.MovieId);
         }

@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using MovieWeb.Application.Common.Interfaces;
 using MovieWeb.Application.Common.Movies.Dtos;
 using MovieWeb.Domain;
 using MovieWeb.Infrastructure.Persistence;
-using System.Net.Http;
-using System.Text.Json;
 
 namespace MovieWeb.Application.Services
 {
@@ -67,13 +64,19 @@ namespace MovieWeb.Application.Services
             return movies;
         }
 
-        public async Task<int> DeleteMovieAsync(int id)
+        public async Task<bool> DeleteMovieAsync(int id)
         {
-            var movieToBeDeleted = mapper.Map<Movie>(await GetMovieAsync(id));
+            var movie = await dbContext.Movies
+                .Where(o => o.Id == id)
+                .FirstOrDefaultAsync();
 
-            dbContext.Movies.Remove(movieToBeDeleted);
+            if (movie == null)
+                return false;
 
-            return movieToBeDeleted.Id;
+            dbContext.Movies.Remove(movie);
+            await dbContext.SaveChangesAsync(default);
+
+            return true;
         }
     }
 }

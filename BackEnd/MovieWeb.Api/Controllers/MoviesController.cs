@@ -2,12 +2,9 @@
 using MediatR;
 using Microservices.Orders.Application.Common.Orders.Commands.CreateOrder;
 using Microsoft.AspNetCore.Mvc;
-using MovieWeb.Application.Common.Interfaces;
 using MovieWeb.Application.Common.Movies.Commands.DeleteMovie;
 using MovieWeb.Application.Common.Movies.Dtos;
 using MovieWeb.Application.Common.Movies.Queries.GetMovies;
-using MovieWeb.Application.Services;
-using MovieWeb.Domain;
 
 namespace MovieWeb.Api.Controllers
 {
